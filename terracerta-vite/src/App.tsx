@@ -1,3 +1,4 @@
+import Navigation from "@/_components/Navigation";
 import { Toaster as Sonner } from "@/_components/ui/sonner";
 import { Toaster } from "@/_components/ui/toaster";
 import { TooltipProvider } from "@/_components/ui/tooltip";
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <Navigation />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/analysis" element={<Analysis />} />
