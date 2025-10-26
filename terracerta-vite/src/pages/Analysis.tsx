@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/_co
 import { Input } from "@/_components/ui/input";
 import { Label } from "@/_components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/_components/ui/select";
-import { ArrowLeft, Search, MapPin } from "lucide-react";
+import { Search, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -33,16 +33,7 @@ const Analysis = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      
-        <div className="container mx-auto px-24 py-4 flex items-center justify-between">
-          <Button variant="ghost" onClick={() => navigate("/")} size="sm" >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Voltar
-          </Button>
-        </div>
-      
-
+    <div className="min-h-screen bg-background">    
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-2xl mx-auto">
