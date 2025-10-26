@@ -1,10 +1,12 @@
 import terracertaLogo from "@/assets/terracerta-logo.png";
 import { cn } from "@/lib/utils";
-import { BarChart3, FileSearch, Home } from "lucide-react";
+import { BarChart3, FileSearch, Home, Menu, X } from "lucide-react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     {
@@ -63,47 +65,45 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
-              <span className="sr-only">Abrir menu</span>
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              <span className="sr-only">
+                {isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              </span>
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden pb-3 space-y-1">
-          {navItems.map(item => {
-            const Icon = item.icon;
-            const isActive = location.pathname === item.path;
+        {isMobileMenuOpen && (
+          <div className="md:hidden pb-3 space-y-1 border-t border-gray-200 pt-3">
+            {navItems.map(item => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
 
-            return (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={cn(
-                  "flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors",
-                  isActive
-                    ? "bg-green-50 text-green-700"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                )}>
-                <Icon className="h-5 w-5" />
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
-        </div>
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "flex items-center space-x-2 px-3 py-2 rounded-md text-base font-medium transition-colors",
+                    isActive
+                      ? "bg-green-50 text-green-700"
+                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  )}>
+                  <Icon className="h-5 w-5" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </div>
     </nav>
   );
