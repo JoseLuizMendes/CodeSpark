@@ -31,7 +31,9 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img src={terracertaLogo} alt="TerraCerta" className="h-16 w-16" />
-            <span className="text-xl font-bold text-gray-900">TerraCerta</span>
+            <h1 className="text-xl font-bold text-gray-900">
+              Terra<span className="text-primary">Certa</span>
+            </h1>
           </Link>
 
           {/* Navigation Links */}
