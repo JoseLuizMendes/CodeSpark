@@ -56,11 +56,17 @@ export function RiskMeter({
 
   const alert = getGovernmentAlert(value);
 
+  const getIconColor = (val: number) => {
+    if (val < 30) return "text-success";
+    if (val < 70) return "text-warning";
+    return "text-danger";
+  };
+
   return (
     <Card className="shadow-card hover:shadow-elevated transition-shadow h-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
-          <AlertTriangle className="w-5 h-5 text-primary" />
+          <AlertTriangle className={`w-5 h-5 ${getIconColor(value)}`} />
           {label}
         </CardTitle>
       </CardHeader>
