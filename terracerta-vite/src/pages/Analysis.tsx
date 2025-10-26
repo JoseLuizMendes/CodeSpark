@@ -7,7 +7,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowLeft, Search, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import logoImage from "@/assets/plantsafe-logo.png";
 
 const Analysis = () => {
   const navigate = useNavigate();
@@ -35,21 +34,14 @@ const Analysis = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-card border-b sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={logoImage} alt="PlantSafe" className="w-14 h-14" />
-            <h1 className="text-xl font-bold">
-              Terra<span className="text-primary">Certa</span>
-            </h1>
-          </div>
-          <Button variant="ghost" onClick={() => navigate("/")} size="sm">
+      
+        <div className="container mx-auto px-24 py-4 flex items-center justify-between">
+          <Button variant="ghost" onClick={() => navigate("/")} size="sm" >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Voltar
           </Button>
         </div>
-      </header>
+      
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-12">

@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/_components/ui/card";
 import { RiskBadge } from "@/_components/ui/risk-badge";
-import logoImage from "@/assets/plantsafe-logo.png";
 import {
   ArrowLeft,
   Bug,
@@ -71,30 +70,6 @@ const Dashboard = () => {
   })();
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-card border-b sticky top-0 z-50 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img src={logoImage} alt="PlantSafe" className="w-14 h-14" />
-            <div>
-              <h1 className="text-xl font-bold">
-                Terra<span className="text-primary">Certa</span>
-              </h1>
-              <p className="text-xs text-muted-foreground">
-                {userLocation} • {crop} • {phase}
-              </p>
-            </div>
-          </div>
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/analysis")}
-            size="sm">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Nova Análise
-          </Button>
-        </div>
-      </header>
-
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
@@ -103,6 +78,15 @@ const Dashboard = () => {
             Análise completa da sua lavoura baseada em dados climáticos e
             detecção de pragas
           </p>
+          {(userLocation || crop || phase) && (
+            <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+              {userLocation && <span>{userLocation}</span>}
+              {userLocation && (crop || phase) && <span>•</span>}
+              {crop && <span>{crop}</span>}
+              {crop && phase && <span>•</span>}
+              {phase && <span>{phase}</span>}
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
